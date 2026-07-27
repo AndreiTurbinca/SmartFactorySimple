@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="bin/Debug/net10.0/employees.txt" />
+    <File Path="bin/Debug/net10.0/machines.txt" />
+    <File Path="bin/Debug/net10.0/operations.txt" />
+    <File Path="bin/Debug/net10.0/orders.txt" />
+    <File Path="bin/Debug/net10.0/products.txt" />
+  </Folder>
+  <Project Path="SmartFactorySimple.csproj" />
+</Solution>

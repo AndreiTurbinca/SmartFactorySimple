@@ -1,0 +1,265 @@
+```mermaid
+classDiagram
+    %% ENUMS
+    class ProductCategory{
+        <<enumeration>>
+        OutdoorToys
+        EducationalToys
+        PretendToys
+    }
+
+    class MachineStatus{
+        <<enumeration>>
+        Stopped
+        Running
+        Maintenance
+    }
+
+    class MachineCondition{
+        <<enumeration>>
+        Excellent
+        Good
+        Worn
+        Critical
+    }
+
+    class EmployeeRole{
+        <<enumeration>>
+        Director
+        ProductionManager
+        Engineer
+        Technician
+        MachineOperator
+        SalesAgent
+    }
+
+    class ProductionOrderStatus{
+        <<enumeration>>
+        Created
+        InProgress
+        Completed
+    }
+
+    class Priority{
+        <<enumeration>>
+        Low
+        Medium
+        High
+    }
+
+    %% EMPLOYEE HIERARCHY
+    class Employee{
+        <<abstract>>
+        Id: string
+        Nume: string
+        Rol: EmployeeRole
+        Salariu: decimal
+        DataAngajarii: DateTime
+        GetVechimeZile() int
+        PerformDuty()* void
+        Afiseaza() void
+    }
+
+    class Director{
+        PerformDuty() void
+        Afiseaza() void
+    }
+
+    class ProductionManager{
+        CreazaComanda() ProductionOrder
+        PerformDuty() void
+    }
+
+    class Engineer{
+        Inspecteaza(machine) void
+        PerformDuty() void
+    }
+
+    class Technician{
+        Repara(machine) bool
+        PerformDuty() void
+    }
+
+    class MachineOperator{
+        Opereaza(machine) void
+        PerformDuty() void
+    }
+
+    class SalesAgent{
+        VindeProdus(product, qty, factory) bool
+        PerformDuty() void
+    }
+
+    %% PRODUCT HIERARCHY
+    class Product{
+        <<abstract>>
+        Nume: string
+        Category: ProductCategory
+        SellingPrice: decimal
+        ProductionCost: decimal
+        Cantitate: int
+        AdaugaStoc(qty) void
+        VindeStoc(qty) void
+        GetDescription()* string
+        Afiseaza() void
+    }
+
+    class WoodenCubes{
+        Marime: string
+        GetDescription() string
+    }
+
+    class Doll{
+        Marime: string
+        GetDescription() string
+    }
+
+    class Ball{
+        Marime: string
+        GetDescription() string
+    }
+
+    class Frisbee{
+        Marime: string
+        GetDescription() string
+    }
+
+    class TedyBear{
+        Marime: string
+        GetDescription() string
+    }
+
+    %% MACHINE HIERARCHY
+    class Machine{
+        <<abstract>>
+        SerialNumber: string
+        Nume: string
+        Status: MachineStatus
+        Conditie: MachineCondition
+        DataFabricatiei: DateTime
+        Piese: MachinePart[]
+        NrPiese: int
+        AdaugaPiesa(part) void
+        ArePieseComplete() bool
+        Start() void
+        Stop() void
+        SetMaintenance() void
+        RestoreazaConditia() void
+        Produce()* void
+        RunDiagnostics()* string
+        Afiseaza() void
+    }
+
+    class SewingMachine{
+        Produce() void
+        RunDiagnostics() string
+    }
+
+    class CuttingMachine{
+        Produce() void
+        RunDiagnostics() string
+    }
+
+    class MachinePart{
+        Nume: string
+        Tip: string
+        EFunctionala: bool
+        DataInstalarii: DateTime
+        Strica() void
+        Inlocuieste() void
+        Afiseaza() void
+    }
+
+    %% PRODUCTION ORDER
+    class ProductionOrder{
+        Id: string
+        Masina: Machine
+        CreatDe: ProductionManager
+        NumeProdus: string
+        CantitateTarget: int
+        CantitateProdusa: int
+        Status: ProductionOrderStatus
+        Prioritate: Priority
+        DataCrearii: DateTime
+        InregistreazaProductie(units) void
+        SetPriority() void
+        Afiseaza() void
+    }
+
+    %% FACTORY
+    class Factory{
+        Nume: string
+        _angajati: Employee[]
+        _masini: Machine[]
+        _produse: Product[]
+        _comenzi: ProductionOrder[]
+        _totalRevenue: decimal
+        _totalSalesQuantity: int
+        AdaugaAngajat(employee) bool
+        StergeAngajat(id) bool
+        GasesteAngajat(id) Employee
+        AdaugaMasina(machine) bool
+        GasesteMasina(serial) Machine
+        AdaugaProdus(product) bool
+        GasesteProdus(name) Product
+        CreazaComanda() void
+        ExecutaComanda() void
+        VandeProdus() void
+        RecordSale(product, qty, price) void
+        GetTotalRevenue() decimal
+        GetTotalSalesQuantity() int
+        CalculateProfit() decimal
+        GetNextPriorityOrder() ProductionOrder
+        AfiseazaRaportGeneral() void
+        AfiseazaRaportVanzari() void
+        AfiseazaComenzi() void
+        AfiseazaComenziSortedByPriority() void
+    }
+
+    %% PROGRAM
+    class Program{
+        fabrica: Factory
+        Main() void
+    }
+
+    %% INHERITANCE RELATIONSHIPS
+    Employee <|-- Director
+    Employee <|-- ProductionManager
+    Employee <|-- Engineer
+    Employee <|-- Technician
+    Employee <|-- MachineOperator
+    Employee <|-- SalesAgent
+
+    Product <|-- WoodenCubes
+    Product <|-- Doll
+    Product <|-- Ball
+    Product <|-- Frisbee
+    Product <|-- TedyBear
+
+    Machine <|-- SewingMachine
+    Machine <|-- CuttingMachine
+
+    %% COMPOSITION RELATIONSHIPS
+    Factory "1" *-- "0..50" Employee: contains
+    Factory "1" *-- "0..20" Machine: contains
+    Factory "1" *-- "0..50" Product: contains
+    Factory "1" *-- "0..100" ProductionOrder: contains
+
+    Machine "1" *-- "0..10" MachinePart: has
+
+    %% ASSOCIATIONS
+    ProductionOrder --> Machine: uses
+    ProductionOrder --> ProductionManager: created by
+    ProductionOrder --> ProductionOrderStatus: has status
+    ProductionOrder --> Priority: has priority
+
+    Program --> Factory: uses
+
+    %% DEPENDENCY RELATIONSHIPS
+    ProductionManager ..> ProductionOrder: creates
+    Engineer ..> Machine: inspects
+    Technician ..> Machine: repairs
+    MachineOperator ..> Machine: operates
+    SalesAgent ..> Product: sells
+    SalesAgent ..> Factory: records sale to
+```
