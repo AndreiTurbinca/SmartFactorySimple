@@ -529,7 +529,7 @@ public class Factory
 
         return _totalRevenue - totalCost;
     }
-
+//
     public bool ListCompanyPublicly(decimal percentagePublic, int sharesIssued, decimal sharePrice)
     {
         if (_companyPubliclyListed)
