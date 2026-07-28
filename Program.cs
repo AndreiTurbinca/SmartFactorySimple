@@ -88,10 +88,8 @@ class Program
         }
 
         DateDemo();
-        // Load persisted orders from orders.txt if present
-        fabrica.LoadOrdersFromFile();
-        fabrica.IncarcaMasini();
-        fabrica.IncarcaProduse();
+        // Load persisted machines, products, and orders in a dependency-safe order.
+        fabrica.LoadPersistentData();
 
         bool running = true;
         while (running)
@@ -181,8 +179,8 @@ class Program
 
                 break;
             case "5": ShowOperationLogs(); break;
-            case "7": fabrica.ListCompanyPubliclyFromConsole(); break;
-            case "6": return Logout();
+            case "6": fabrica.ListCompanyPubliclyFromConsole(); break;
+            case "7": return Logout();
             case "0": return false;
             default: Console.WriteLine("Invalid option!"); break;
         }

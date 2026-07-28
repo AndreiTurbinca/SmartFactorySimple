@@ -432,3 +432,38 @@
 2026-07-28 20:41:11 | OP001 | Employee added: Elena Dumitru
 2026-07-28 20:41:11 | SA001 | Employee added: Ioana Radu
 2026-07-28 21:14:45 | 1 | Failed login attempt
+2026-07-28 21:39:59 | director | Successful login
+2026-07-28 21:39:59 | DIR001 | Employee added: Alex Popescu
+2026-07-28 21:39:59 | PM001 | Employee added: Maria Ionescu
+2026-07-28 21:39:59 | ENG001 | Employee added: Ion Vasile
+2026-07-28 21:39:59 | TH001 | Employee added: Andrei Marin
+2026-07-28 21:39:59 | OP001 | Employee added: Elena Dumitru
+2026-07-28 21:39:59 | SA001 | Employee added: Ioana Radu
+2026-07-28 21:44:16 | PM001 | Employee added: Maria Ionescu
+2026-07-28 21:44:52 | director | Successful login
+2026-07-28 21:44:52 | DIR001 | Employee added: Alex Popescu
+2026-07-28 21:44:52 | PM001 | Employee added: Maria Ionescu
+2026-07-28 21:44:52 | ENG001 | Employee added: Ion Vasile
+2026-07-28 21:44:52 | TH001 | Employee added: Andrei Marin
+2026-07-28 21:44:52 | OP001 | Employee added: Elena Dumitru
+2026-07-28 21:44:52 | SA001 | Employee added: Ioana Radu
+2026-07-28 21:47:09 | director  | Failed login attempt
+2026-07-28 21:47:14 | director | Successful login
+2026-07-28 21:47:14 | DIR001 | Employee added: Alex Popescu
+2026-07-28 21:47:14 | PM001 | Employee added: Maria Ionescu
+2026-07-28 21:47:14 | ENG001 | Employee added: Ion Vasile
+2026-07-28 21:47:14 | TH001 | Employee added: Andrei Marin
+2026-07-28 21:47:14 | OP001 | Employee added: Elena Dumitru
+2026-07-28 21:47:14 | SA001 | Employee added: Ioana Radu
+2026-07-28 21:47:59 | director | Successful login
+2026-07-28 21:47:59 | DIR001 | Employee added: Alex Popescu
+2026-07-28 21:47:59 | PM001 | Employee added: Maria Ionescu
+2026-07-28 21:47:59 | ENG001 | Employee added: Ion Vasile
+2026-07-28 21:47:59 | TH001 | Employee added: Andrei Marin
+2026-07-28 21:47:59 | OP001 | Employee added: Elena Dumitru
+2026-07-28 21:47:59 | SA001 | Employee added: Ioana Radu
+2026-07-28 21:50:03 | PM001 | Employee added: Maria Ionescu
+2026-07-28 21:51:39 | PM001 | Employee added: Maria Ionescu
+2026-07-28 21:52:21 | PM001 | Employee added: Maria Ionescu
+2026-07-28 21:55:32 | PM001 | Employee added: Maria Ionescu
+2026-07-28 21:56:42 | PM001 | Employee added: Maria Ionescu

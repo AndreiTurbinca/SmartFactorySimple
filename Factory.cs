@@ -199,7 +199,7 @@ public class Factory
     // O funcție ajutătoare pentru a vedea ce materiale mai ai
     public void AfiseazaStocMaterialePrime()
     {
-        Console.WriteLine("\n=== STOC MATERIALE PRIME ===");
+        Console.WriteLine(Messages.RawMaterialsStockHeader);
         foreach (var material in _stocMateriale)
         {
             Console.WriteLine(Messages.InventoryMaterialLine(material.Key, material.Value));
@@ -307,7 +307,7 @@ public class Factory
         Machine masina = GasesteMasina(serialMasina);
         if (masina == null)
         {
-            Console.WriteLine("Machine doesn't exist!");
+            Console.WriteLine(Messages.MachineDoesNotExist);
             return;
         }
 
@@ -333,7 +333,7 @@ public class Factory
             return;
         }
 
-        Console.WriteLine("\n=== MACHINES IN MAINTENANCE ===");
+        Console.WriteLine(Messages.MachinesInMaintenanceHeader);
         foreach (var machine in masiniInMentenanta)
         {
             Console.WriteLine($"{machine.SerialNumber} - {machine.Nume} | Condition: {machine.Conditie}");
@@ -424,7 +424,7 @@ public class Factory
         Machine masina = GasesteMasina(serial);
         if (masina == null)
         {
-            Console.WriteLine("Machine doesn't exist!");
+            Console.WriteLine(Messages.MachineDoesNotExist);
             return;
         }
 
@@ -481,16 +481,20 @@ public class Factory
 
     public void AfiseazaRaportGeneral()
     {
-        Console.WriteLine("\n=== REPORT: " + Nume + " ===");
-        Console.WriteLine("Employees: " + _employeeRepository.Count);
-        Console.WriteLine("Machines:   " + _machineRepository.Count);
-        Console.WriteLine("Products:  " + _productRepository.Count);
-        Console.WriteLine("Orders:  " + _orderRepository.Count);
-        Console.WriteLine("Total Revenue: " + _totalRevenue + " RON");
-        Console.WriteLine("Total Units Sold: " + _totalSalesQuantity);
-        Console.WriteLine("Machines requiring maintenance: " + GetMachinesRequiringMaintenance(7).Count);
-        Console.WriteLine("Products below stock threshold: " + GetLowStockProducts().Count);
-        Console.WriteLine("");
+        Console.WriteLine(string.Format(Messages.GeneralReportHeader, Nume));
+        Console.WriteLine(string.Format(Messages.GeneralReportEmployees, _employeeRepository.Count));
+        Console.WriteLine(string.Format(Messages.GeneralReportMachines, _machineRepository.Count));
+        Console.WriteLine(string.Format(Messages.GeneralReportProducts, _productRepository.Count));
+        Console.WriteLine(string.Format(Messages.GeneralReportOrders, _orderRepository.Count));
+        Console.WriteLine(string.Format(Messages.GeneralReportRevenue, _totalRevenue));
+        Console.WriteLine(string.Format(Messages.GeneralReportUnitsSold, _totalSalesQuantity));
+        Console.WriteLine(string.Format(Messages.GeneralReportMaintenance, GetMachinesRequiringMaintenance(7).Count));
+        Console.WriteLine(string.Format(Messages.GeneralReportLowStock, GetLowStockProducts().Count));
+        if (_companyPubliclyListed)
+        {
+            Console.WriteLine(string.Format(Messages.CompanyValuation, GetCompanyValuation()));
+        }
+        Console.WriteLine(Messages.EmptyLine);
     }
 
     
@@ -519,6 +523,17 @@ public class Factory
     public int GetTotalSalesQuantity()
     {
         return _totalSalesQuantity;
+    }
+
+    public decimal GetCompanyValuation()
+    {
+        if (!_companyPubliclyListed || _publicSharePercentage <= 0m)
+        {
+            return 0m;
+        }
+
+        decimal publicValue = _sharePrice * _issuedShares;
+        return publicValue / (_publicSharePercentage / 100m);
     }
 
     public decimal CalculateProfit()
@@ -678,6 +693,18 @@ public class Factory
         _productRepository.LoadProducts();
     }
 
+    public void LoadPersistentData()
+    {
+        IncarcaMasini();
+        IncarcaProduse();
+        LoadOrdersFromFile();
+    }
+
+    public ProductionOrder GetOrderById(string id)
+    {
+        return _orderRepository.FindById(id);
+    }
+
     public void SalveazaMasini()
     {
         _machineRepository.SaveAllMachines();
@@ -691,11 +718,11 @@ public class Factory
     public void AfiseazaMentenantaPredictiva(int daysAhead = 7)
     {
         List<Machine> machines = GetMachinesRequiringMaintenance(daysAhead);
-        Console.WriteLine("\n=== PREDICTIVE MAINTENANCE ===");
+        Console.WriteLine(Messages.PredictiveMaintenanceHeader);
 
         if (machines.Count == 0)
         {
-            Console.WriteLine(string.Format("No machines require maintenance in the next {0} days.", daysAhead));
+            Console.WriteLine(string.Format(Messages.NoMaintenanceInNextDays, daysAhead));
             return;
         }
 
@@ -706,27 +733,27 @@ public class Factory
     public void AfiseazaDashboardEficienta() 
     {
         List<Machine> machines = _machineRepository.GetAll();
-        Console.WriteLine("\n=== PRODUCTION EFFICIENCY DASHBOARD ===");
+        Console.WriteLine(Messages.ProductionEfficiencyDashboardHeader);
 
         if (machines.Count == 0)
         {
-            Console.WriteLine("There are no machines!");
+            Console.WriteLine(Messages.NoMachines);
             return;
         }
 
         machines.ForEach(machine => Console.WriteLine(
             $"{machine.SerialNumber} - {machine.Nume}: {machine.CalculateEfficiencyPercentage():F2}% efficiency, {machine.ProductionCycles} production cycle(s)."));
-        Console.WriteLine($"Average efficiency: {machines.Average(machine => machine.CalculateEfficiencyPercentage()):F2}%");
+        Console.WriteLine(string.Format(Messages.AverageEfficiency, machines.Average(machine => machine.CalculateEfficiencyPercentage())));
     }
 
     public void AfiseazaStareMasini()
     {
         List<Machine> machines = _machineRepository.GetAll();
-        Console.WriteLine("\n=== MACHINE HEALTH MONITORING ===");
+        Console.WriteLine(Messages.MachineHealthMonitoringHeader);
 
         if (machines.Count == 0)
         {
-            Console.WriteLine("There are no machines!");
+            Console.WriteLine(Messages.NoMachines);
             return;
         }
 
@@ -744,12 +771,12 @@ public class Factory
 
     public void AfiseazaAlerteInventar(int threshold = 5)
     {
-        Console.WriteLine("\n=== INVENTORY ALERTS ===");
+        Console.WriteLine(Messages.InventoryAlertsHeader);
         List<Product> products = GetLowStockProducts(threshold);
 
         if (products.Count == 0)
         {
-            Console.WriteLine(string.Format("All products are above the stock threshold of {0}.", threshold));
+            Console.WriteLine(string.Format(Messages.InventoryAboveThreshold, threshold));
             return;
         }
 
@@ -759,17 +786,17 @@ public class Factory
     private static void DisplayInventoryAlert(Product product, int threshold = 5)
     {
         if (product.Cantitate <= threshold)
-            Console.WriteLine(string.Format("ALERT: {0} stock is low ({1} remaining; threshold: {2}).", product.Nume, product.Cantitate, threshold));
+            Console.WriteLine(string.Format(Messages.InventoryLowStockAlert, product.Nume, product.Cantitate, threshold));
     }
 
     public void AfiseazaRaportVanzari()
     {
-        Console.WriteLine("\n=== SALES REPORT: " + Nume + " ===");
-        Console.WriteLine("Total Revenue: " + _totalRevenue + " RON");
-        Console.WriteLine("Total Units Sold: " + _totalSalesQuantity);
-        Console.WriteLine("Average Price Per Unit: " + (_totalSalesQuantity > 0 ? (_totalRevenue / _totalSalesQuantity).ToString("F2") : "N/A") + " RON");
-        Console.WriteLine("Estimated Profit: " + CalculateProfit() + " RON");
-        Console.WriteLine("");
+        Console.WriteLine(string.Format(Messages.SalesReportHeader, Nume));
+        Console.WriteLine(string.Format(Messages.SalesReportRevenue, _totalRevenue));
+        Console.WriteLine(string.Format(Messages.SalesReportUnitsSold, _totalSalesQuantity));
+        Console.WriteLine(string.Format(Messages.SalesReportAveragePrice, _totalSalesQuantity > 0 ? (_totalRevenue / _totalSalesQuantity).ToString("F2") : "N/A"));
+        Console.WriteLine(string.Format(Messages.SalesReportEstimatedProfit, CalculateProfit()));
+        Console.WriteLine(Messages.EmptyLine);
     }
 
     public void AfiseazaComenzi()
@@ -787,7 +814,7 @@ public class Factory
             return;
         }
 
-        Console.WriteLine("=== Orders sorted by priority ===");
+        Console.WriteLine(Messages.OrdersSortedByPriorityHeader);
         foreach (var comanda in comenziSortate)
         {
             comanda.Afiseaza();
