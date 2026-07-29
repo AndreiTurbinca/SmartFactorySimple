@@ -1036,11 +1036,22 @@ class Program
 
         static void DateDemo()
         {
+            fabrica.AdaugaAngajat(new Director("1", "Alex Popescu", 8000, DateTime.Now.AddYears(-5)));
             fabrica.AdaugaAngajat(new Director("DIR001", "Alex Popescu", 8000, DateTime.Now.AddYears(-5)));
+
+            fabrica.AdaugaAngajat(new ProductionManager("2", "Maria Ionescu", 5500, DateTime.Now.AddYears(-3)));
             fabrica.AdaugaAngajat(new ProductionManager("PM001", "Maria Ionescu", 5500, DateTime.Now.AddYears(-3)));
+
+            fabrica.AdaugaAngajat(new Engineer("3", "Ion Vasile", 5000, DateTime.Now.AddYears(-2)));
             fabrica.AdaugaAngajat(new Engineer("ENG001", "Ion Vasile", 5000, DateTime.Now.AddYears(-2)));
+
+            fabrica.AdaugaAngajat(new Technician("4", "Andrei Marin", 4000, DateTime.Now.AddYears(-1)));
             fabrica.AdaugaAngajat(new Technician("TH001", "Andrei Marin", 4000, DateTime.Now.AddYears(-1)));
+
+            fabrica.AdaugaAngajat(new MachineOperator("5", "Elena Dumitru", 3500, DateTime.Now.AddMonths(-8)));
             fabrica.AdaugaAngajat(new MachineOperator("OP001", "Elena Dumitru", 3500, DateTime.Now.AddMonths(-8)));
+
+            fabrica.AdaugaAngajat(new SalesAgent("6", "Ioana Radu", 3300, DateTime.Now.AddMonths(-4)));
             fabrica.AdaugaAngajat(new SalesAgent("SA001", "Ioana Radu", 3300, DateTime.Now.AddMonths(-4)));
 
             SewingMachine s1 = new SewingMachine("M001", "Juki Sewing", DateTime.Now.AddYears(-3));

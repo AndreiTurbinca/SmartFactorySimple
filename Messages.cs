@@ -249,6 +249,7 @@ namespace SmartFactorySimple
         public static string MachineOperatorMaintenanceMessage => "The machine is under maintenance.";
         public static string MachineOperatorOffMessage => "The machine is off.";
         public static string MachineOperatorStartPrompt => "Type YES to start it or NO to skip.";
+        public static string OrderCannotExecuteUntilMachineStarted => "The machine will be started automatically for this order if it is healthy enough.";
         public static string SalesMessage(string name, int quantity, string productName) => $"{name} sold {quantity}x {productName}";
         public static string OrderProgress(string orderId, int produced, int target) => $"Progres {orderId}: {produced}/{target}";
         public static string OrderCompleted(string orderId) => $"Order {orderId} COMPLETED!";

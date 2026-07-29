@@ -467,3 +467,74 @@
 2026-07-28 21:52:21 | PM001 | Employee added: Maria Ionescu
 2026-07-28 21:55:32 | PM001 | Employee added: Maria Ionescu
 2026-07-28 21:56:42 | PM001 | Employee added: Maria Ionescu
+2026-07-28 22:04:51 | director | Successful login
+2026-07-28 22:04:51 | DIR001 | Employee added: Alex Popescu
+2026-07-28 22:04:51 | PM001 | Employee added: Maria Ionescu
+2026-07-28 22:04:51 | ENG001 | Employee added: Ion Vasile
+2026-07-28 22:04:51 | TH001 | Employee added: Andrei Marin
+2026-07-28 22:04:51 | OP001 | Employee added: Elena Dumitru
+2026-07-28 22:04:51 | SA001 | Employee added: Ioana Radu
+2026-07-28 22:06:27 | director | User logged out
+2026-07-28 22:06:30 | tech1 | Successful login
+2026-07-29 21:24:39 | operator1 | Successful login
+2026-07-29 21:24:39 | DIR001 | Employee added: Alex Popescu
+2026-07-29 21:24:39 | PM001 | Employee added: Maria Ionescu
+2026-07-29 21:24:39 | ENG001 | Employee added: Ion Vasile
+2026-07-29 21:24:39 | TH001 | Employee added: Andrei Marin
+2026-07-29 21:24:39 | OP001 | Employee added: Elena Dumitru
+2026-07-29 21:24:39 | SA001 | Employee added: Ioana Radu
+2026-07-29 21:26:33 | operator1 | Successful login
+2026-07-29 21:26:33 | DIR001 | Employee added: Alex Popescu
+2026-07-29 21:26:33 | PM001 | Employee added: Maria Ionescu
+2026-07-29 21:26:33 | ENG001 | Employee added: Ion Vasile
+2026-07-29 21:26:33 | TH001 | Employee added: Andrei Marin
+2026-07-29 21:26:33 | OP001 | Employee added: Elena Dumitru
+2026-07-29 21:26:33 | SA001 | Employee added: Ioana Radu
+2026-07-29 21:28:00 | operator1 | Successful login
+2026-07-29 21:28:00 | DIR001 | Employee added: Alex Popescu
+2026-07-29 21:28:00 | PM001 | Employee added: Maria Ionescu
+2026-07-29 21:28:00 | ENG001 | Employee added: Ion Vasile
+2026-07-29 21:28:00 | TH001 | Employee added: Andrei Marin
+2026-07-29 21:28:00 | OP001 | Employee added: Elena Dumitru
+2026-07-29 21:28:00 | SA001 | Employee added: Ioana Radu
+2026-07-29 21:29:58 | PM001 | Employee added: Maria Ionescu
+2026-07-29 21:29:58 | DIR001 | Employee added: Alex Popescu
+2026-07-29 21:29:58 | PM001 | Employee added: Maria Ionescu
+2026-07-29 21:29:58 | ENG001 | Employee added: Ion Vasile
+2026-07-29 21:29:58 | TH001 | Employee added: Andrei Marin
+2026-07-29 21:29:58 | OP001 | Employee added: Elena Dumitru
+2026-07-29 21:29:58 | SA001 | Employee added: Ioana Radu
+2026-07-29 21:30:45 | PM001 | Employee added: Maria Ionescu
+2026-07-29 21:30:45 | 1 | Employee added: Alex Popescu
+2026-07-29 21:30:45 | 2 | Employee added: Maria Ionescu
+2026-07-29 21:30:45 | 3 | Employee added: Ion Vasile
+2026-07-29 21:30:45 | 4 | Employee added: Andrei Marin
+2026-07-29 21:30:45 | 5 | Employee added: Elena Dumitru
+2026-07-29 21:30:45 | 6 | Employee added: Ioana Radu
+2026-07-29 21:31:53 | operator1 | Successful login
+2026-07-29 21:31:53 | 1 | Employee added: Alex Popescu
+2026-07-29 21:31:53 | DIR001 | Employee added: Alex Popescu
+2026-07-29 21:31:53 | 2 | Employee added: Maria Ionescu
+2026-07-29 21:31:53 | PM001 | Employee added: Maria Ionescu
+2026-07-29 21:31:53 | 3 | Employee added: Ion Vasile
+2026-07-29 21:31:53 | ENG001 | Employee added: Ion Vasile
+2026-07-29 21:31:53 | 4 | Employee added: Andrei Marin
+2026-07-29 21:31:53 | TH001 | Employee added: Andrei Marin
+2026-07-29 21:31:53 | 5 | Employee added: Elena Dumitru
+2026-07-29 21:31:53 | OP001 | Employee added: Elena Dumitru
+2026-07-29 21:31:53 | 6 | Employee added: Ioana Radu
+2026-07-29 21:31:53 | SA001 | Employee added: Ioana Radu
+2026-07-29 21:35:48 | PM001 | Employee added: Maria Ionescu
+2026-07-29 21:35:48 | 1 | Employee added: Alex Popescu
+2026-07-29 21:35:48 | 2 | Employee added: Maria Ionescu
+2026-07-29 21:35:48 | 3 | Employee added: Ion Vasile
+2026-07-29 21:35:48 | 4 | Employee added: Andrei Marin
+2026-07-29 21:35:48 | 5 | Employee added: Elena Dumitru
+2026-07-29 21:35:48 | 6 | Employee added: Ioana Radu
+2026-07-29 21:40:00 | PM001 | Employee added: Maria Ionescu
+2026-07-29 21:40:00 | 1 | Employee added: Alex Popescu
+2026-07-29 21:40:00 | 2 | Employee added: Maria Ionescu
+2026-07-29 21:40:00 | 3 | Employee added: Ion Vasile
+2026-07-29 21:40:00 | 4 | Employee added: Andrei Marin
+2026-07-29 21:40:00 | 5 | Employee added: Elena Dumitru
+2026-07-29 21:40:00 | 6 | Employee added: Ioana Radu

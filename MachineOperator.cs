@@ -11,31 +11,32 @@ public class MachineOperator : Employee
 
     public void Opereaza(Machine masina)
     {
-
         if (masina.Status == MachineStatus.Running)
         {
             masina.Produce();
+            return;
         }
-        else if (masina.Status == MachineStatus.Maintenance)
+
+        if (masina.Status == MachineStatus.Maintenance)
         {
             Console.WriteLine(Messages.MachineOperatorMaintenanceMessage);
             return;
         }
-        else
+
+        Console.WriteLine(Messages.MachineOperatorOffMessage);
+        Console.WriteLine(Messages.OrderCannotExecuteUntilMachineStarted);
+
+        if (masina.ArePieseComplete())
         {
-            Console.WriteLine(Messages.MachineOperatorOffMessage);
-            Console.WriteLine(Messages.MachineOperatorStartPrompt);
-            string continuare = Console.ReadLine();
-            if (continuare == "YES")
-            { 
-                masina.Status = MachineStatus.Running;
+            masina.Start();
+            if (masina.Status == MachineStatus.Running)
+            {
                 masina.Produce();
             }
-            else if(continuare == "NO")
-                {
-                 return;
-                }
-
+        }
+        else
+        {
+            Console.WriteLine(Messages.MachineHasBrokenParts(masina.Nume));
         }
     }
 
